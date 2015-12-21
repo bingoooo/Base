@@ -1,4 +1,36 @@
 "use strict";
+var usersList = ["1", "2"];
+var newsList = ["1", "2", "3"];
+var news = [];
+var users = [];
+
+function ajaxCall(table, target){
+	for (var i = 0; i < usersList.length; i++){
+		var currentUrl = "/Base/json/user-" + table[i] + ".json"
+		$.ajax({
+			url : currentUrl,
+			type : "GET",
+			dataType : "json",
+			success : function(json){
+				target.push(json);
+			},
+			error : function(){
+				console.log('erreur de chargement ajax');
+			},
+			complete : function(){
+				console.log('fin de requête ajax');
+			}
+		});
+	}
+}
+
+ajaxCall(usersList, users);
+ajaxCall(newsList, news);
+
+var currentUser = users[0];
+var currentNews = news[0];
+console.log(typeof currentUser);
+console.log(typeof currentNews);
 
 var app = {
 	config: {
@@ -7,6 +39,12 @@ var app = {
 	},
 	init : function(){
 		this.makeTpl();
+	},
+	listeners : function(){
+		
+	},
+	getPage : function(page){
+		
 	},
 	makeTpl: function(){
 		var tpl = "<p>{{msg}}</p>";
@@ -17,4 +55,5 @@ var app = {
 
 $(document).ready(function(){
 	app.init();
+
 });

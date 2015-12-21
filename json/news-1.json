@@ -1,0 +1,8 @@
+{
+	"titre" : "un truc",
+	"date" : "12-12-2015",
+	"lien" : "http://www.google.com",
+	"auteur" : "Allan",
+	"commentaires" : ["tout le monde connait", "bidon", "rageux"],
+	"karma" : 0
+}
